@@ -1,0 +1,86 @@
+.card {
+  margin-top: 15px;
+  /* margin-left: 40px;
+  margin-right: 80px; */
+  padding: 15px;
+  min-height: 600px;
+  min-width: 400px;
+
+  background-color: rgb(231, 226, 226);
+
+  opacity: 1;
+}
+
+.card:hover {
+  border: 1px solid #fff;
+  box-shadow: 0px 10px 30px 0px rgba(195, 206, 214, 1);
+}
+
+.header__card {
+  margin-left: 40%;
+  margin-right: 10px;
+}
+
+.mat-card-footer {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+.btn__buy {
+  background-color: green;
+  color: white;
+}
+.content__buy {
+  margin-left: 10px;
+  display: inline-flex;
+}
+.btn__buy:hover {
+  background-color: rgb(7, 185, 7);
+  color: white;
+}
+.post-image {
+  height: 600px;
+}
+
+.image-small {
+  width: 55px;
+  height: 55px;
+}
+
+.small__1 {
+  border: none;
+
+  background: url("./files/3.png") no-repeat;
+  background-size: 55px 55px;
+}
+
+.small__2 {
+  border: none;
+
+  background: url("./files/2.png") no-repeat;
+  background-size: 55px 55px;
+}
+.small__3 {
+  border: none;
+
+  background: url("./files/1.png") no-repeat;
+  background-size: 55px 55px;
+}
+
+.customref {
+  text-decoration: none;
+  color: rgb(126, 126, 211);
+}
+.customref:hover {
+  color: blueviolet;
+}
+
+.navigate {
+  text-decoration: none;
+  color: gray;
+}
+
+.navigate:hover {
+  background-color: black;
+  color: white;
+}

@@ -1,0 +1,152 @@
+
+
+
+
+
+  <div class="logoDiv">
+    <!-- <a  routerLink="/"><span class="firstSpan" > UK</span> <span class="secondSpan" >IT</span></a> -->
+    <span class="spacer"></span>
+  </div>
+<div class="toolbar_nav" >
+<div class="container-fluid customHeader">
+
+
+
+      <div class="row customHeader__row">
+
+
+        <div class="col-1 logo">
+          <!--Logo-->
+          <!-- <div class="logoDiv"> -->
+              <!-- <a  routerLink="/"><span class="firstSpan" > UK</span> <span class="secondSpan" >IT</span></a> -->
+            <!-- <span class="spacer"></span>
+            </div> -->
+        </div>
+
+          <!-- <div class="logo__link">
+            <a routerLink="/"><span class="firstSpan"> UK</span> <span class="secondSpan">IT</span></a>
+            <span class="spacer"></span>
+          </div>
+          </div> -->
+    <!--/Logo-->
+
+    <!--Selection-->
+        <div class="col-6">
+        <ul>
+            <li>
+              <button mat-button class="btn btn-outline-light btn__All"  routerLink="/" routerLinkActive="mat-accent" [routerLinkActiveOptions]="{exact:true}" type="button" (click)="categoryShowUp('Категорії', chosen)"  >Всі додатки </button>
+            </li>
+
+        <div class="mat_selfcreated" >
+              <mat-form-field appearance="none">
+               <mat-label *ngIf="default=='Категорії'" class="customLabel">Категорії</mat-label>
+
+      <mat-select class="customselect"   #chosen>
+
+
+        <mat-option class="customoption"  *ngFor="let cat of category" value={{cat.value}} (click)="categoryShowUp(chosen.value, chosen)">
+          {{cat.title}}
+        </mat-option>
+
+
+        <!-- <mat-option (click)="categoryShowUp('SL')">
+          Сповільнювач
+        </mat-option> -->
+      </mat-select>
+
+              </mat-form-field>
+
+        </div>
+
+              <li>
+                <button class="butAbout" mat-button routerLink="/about" routerLinkActive="mat-accent">Про нас</button>
+              </li>
+              <li>
+                <button class="butCont" mat-button routerLink="/contacts" routerLinkActive="mat-accent">Контакти</button>
+              </li>
+              </ul>
+              <span class="spacer"></span>
+          </div>
+
+          <!--Selection-->
+
+      <!--Authorization-->
+          <div class="col-5">
+              <ul>
+
+                <li *ngIf="userIsAuthenticated && !isAdmin">
+                  <form class="d-flex">
+                    <button mat-button class="btn btn-outline-light" routerLink="/cart" routerLinkActive="mat-accent"  type="button">
+                      <i class="bi bi-cart-fill me-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                          fill="currentColor" class="bi bi-cart-fill cartColor" viewBox="0 0 16 16">
+                          <path
+                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg></i>
+                      Кошик
+                      <span class="badge bg-white text-black ms-1 rounded-pill">{{quantityCartItems}}</span>
+                    </button>
+                  </form>
+
+                </li>
+<!--
+                <li *ngIf="userIsAuthenticated && !isAdmin">
+                  <a mat-button routerLink="/cart" routerLinkActive="mat-accent">Кошик</a>
+                </li> -->
+
+                <li *ngIf="userIsAuthenticated ">
+
+                  <button mat-button class="btn btn-outline-light" routerLink="/order" routerLinkActive="mat-accent"><i class="bi bi-clipboard-check">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check customOrder"
+                      viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                      <path
+                        d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                      <path
+                        d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                    </svg>
+                  </i> Замовлення</button>
+
+                </li>
+
+                <li *ngIf="userIsAuthenticated && isAdmin">
+                  <button mat-button class="btn btn-outline-light" routerLink="/dashboard-admin" routerLinkActive="mat-accent">
+                  <i class="bi bi-speedometer2 "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer2 customDash"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z" />
+                    <path fill-rule="evenodd"
+                      d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z" />
+                  </svg></i>Панель</button>
+                </li>
+                <li *ngIf="userIsAuthenticated && !isAdmin">
+                  <button mat-button class="btn btn-outline-light" routerLink="/dashboard-user" routerLinkActive="mat-accent">
+                    <i class="bi bi-speedometer2 "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-speedometer2 customDash" viewBox="0 0 16 16">
+                        <path
+                          d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z" />
+                        <path fill-rule="evenodd"
+                          d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z" />
+                      </svg></i>Панель</button>
+                </li>
+
+                <li *ngIf="userIsAuthenticated && isAdmin">
+                  <button  mat-button class="btn btn-outline-light" routerLink="/create"  routerLinkActive="mat-accent">Додати Додаток</button>
+                </li>
+                <li>
+                  <button mat-button *ngIf="!userIsAuthenticated" class="btn btn__login" routerLink="/login" routerLinkActive="mat-accent">Залогуватись</button>
+                </li>
+                <li *ngIf="!userIsAuthenticated">
+                  <a mat-button routerLink="/signup" class="btn btn__login" routerLinkActive="mat-accent">Зареєструватись</a>
+                </li>
+                <li *ngIf="userIsAuthenticated">
+                  <button mat-button class="btn btn__logout" (click)="onLogout()">Вийти</button>
+                </li>
+              </ul>
+             </div>
+             <!--Authorization-->
+     </div>
+ </div>
+ </div>
+
+

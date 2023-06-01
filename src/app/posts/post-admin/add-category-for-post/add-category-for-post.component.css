@@ -1,0 +1,9 @@
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+.button:hover {
+  background-color: rgb(179, 226, 245);
+  color: black;
+}

@@ -1,0 +1,187 @@
+/* .imageL {
+  margin-left: 200px;
+  margin-top: -200px;
+
+  align-items: center;
+  display: block;
+  align-items: center;
+  width: 1222px;
+  height: 455px;
+  background: url("./files/26.jpg") no-repeat;
+} */
+/* .Log {
+ width: 100%;
+  height: 100%;
+  background: url("./files/logotype.svg") no-repeat;
+} */
+.toolbar_nav {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-right: 3rem;
+  margin-left: 3rem;
+
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
+
+  color: white;
+  background-color: gray;
+  border-radius: 5px;
+
+  opacity: 0.9;
+
+  z-index: 0;
+}
+.customHeader {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 4%;
+}
+
+a {
+  text-decoration: none;
+  color: wheat;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.btn__All {
+  margin-top: 0.01em;
+}
+.mat_selfcreated {
+  padding: 0;
+  margin-top: -5px;
+}
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+::ng-deep .customLabel .mat-form-field-has-label {
+  margin-top: -115px;
+}
+::ng-deep .mat_selfcreated .ng-star-inserted {
+  color: white;
+}
+::ng-deep .mat-option-text {
+  color: black;
+}
+::ng-deep .mat_selfcreated .mat-form-field-infix {
+  width: 130px;
+
+  color: white;
+
+  margin-top: 7px;
+  font-size: 14px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.logo {
+  margin-top: 10px;
+
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+
+  text-align: left;
+}
+.logo__link {
+  text-align: left;
+}
+li {
+  margin-bottom: 0.1em;
+  margin-top: 0.25em;
+  margin-right: 5px;
+}
+
+.firstSpan {
+  color: rgb(255, 238, 0);
+}
+
+.firstSpan:hover {
+  color: rgb(22, 51, 182);
+}
+
+.secondSpan {
+  color: rgb(22, 51, 182);
+}
+.secondSpan:hover {
+  color: rgb(255, 238, 0);
+}
+
+.cartColor {
+  margin-bottom: 5px;
+  color: white;
+}
+
+.customselect {
+  padding-bottom: 0;
+}
+
+.customoption {
+  padding: 0;
+  text-decoration: none;
+}
+
+#logotypeU {
+  width: 100%;
+  height: 100%;
+}
+
+.logoDiv {
+  width: 75px;
+  height: 75px;
+
+  position: absolute;
+  top: 3.5%;
+  left: 10%;
+  background: url("./files/лого1.svg") no-repeat;
+
+  z-index: 4;
+}
+
+.customOrder {
+  margin-bottom: 8px;
+  margin-right: 5px;
+}
+
+.customDash {
+  margin-bottom: 8px;
+  margin-right: 5px;
+}
+
+.btn__logout {
+  color: wheat;
+}
+.btn__logout:hover {
+  background-color: rgb(122, 32, 32);
+  color: white;
+}
+
+.btn__login {
+  color: wheat;
+}
+.btn__login:hover {
+  background-color: wheat;
+  color: black;
+}
+
+.mat-accent {
+  color: black;
+}
+
+.butAbout:hover {
+  background-color: darkcyan;
+}
+.butCont:hover {
+  background-color: darkcyan;
+}
+
+.mat-button {
+  padding: 4px;
+}

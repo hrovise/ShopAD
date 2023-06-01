@@ -1,0 +1,176 @@
+<div class="container" *ngIf="!isAdmin">
+
+<mat-card class="col-lg-6" style="width:850px"  *ngFor="let item of posts">
+  <table class="table" style="width: 700px" >
+    <thead>
+      <tr>
+
+        <th>Назва</th>
+        <th>Кількість</th>
+        <th>Сума</th>
+        <th>Дата</th>
+        <th>Статус замовлення</th>
+
+      </tr>
+    </thead>
+    <tbody *ngFor="let i of item.orders" [ngClass]="{process: item.process==='process', finished:item.process==='finished',denied: item.process==='denied'}">
+      <tr>
+  <!-- <mat-card-content style="font-size:25px; min-width:600px;" class="card__custom" *ngFor="let i of item.orders" style="font-size: 25px;">
+    -->
+
+    <thead style="display:none;">
+      <tr>
+
+        <th>Назва</th>
+        <th>Кількість</th>
+        <th>Сума</th>
+        <th>Дата</th>
+        <th>Статус замовлення</th>
+
+      </tr>
+    </thead>
+
+      <th> {{i.post.title}}</th>
+      <th> {{i.quantity}} кг</th>
+      <th>{{i.quantity*i.post.price}} грн</th>
+      <th>{{item.date | date :short}}</th>
+      <th *ngIf="item.process==='ordered'">Очікуйте Підтвердження</th>
+      <th *ngIf="item.process==='process'">В процесі</th>
+      <th *ngIf="item.process==='finished'">Виконано</th>
+       <th *ngIf="item.process==='denied'">Відхилено</th>
+
+
+
+<!--
+</mat-card-content> -->
+
+<!--admin-->
+</tr>
+</tbody>
+</table>
+
+</mat-card>
+
+</div>
+<div class="container" *ngIf="isAdmin">
+<div class="col-lg-2" style="margin-right:5px;">
+
+
+
+  <mat-select class="customselect"  #chosen placeholder="Всі">
+
+
+    <mat-option *ngFor='let doubleProcess of doubleProcessStatus' (click)="setCategory(doubleProcess) "value={{doubleProcess}} class="customoption">
+      {{doubleProcess}}
+    </mat-option>
+
+
+    <!-- <mat-option (click)="categoryShowUp('SL')">
+              Сповільнювач
+            </mat-option> -->
+  </mat-select>
+
+
+</div>
+<div class="row">
+<mat-card class="col-lg-6" style="width:950px"  *ngFor="let item of posts | status: statusProcess" >
+
+   <table class="table" style="width: 700px"  >
+      <thead>
+        <tr>
+
+          <th>Назва</th>
+          <th>Кількість</th>
+          <th>Компанія</th>
+          <th>Контакти</th>
+          <th>Пошта</th>
+          <th>Код</th>
+          <th>Дата</th>
+          <th>Статус</th>
+
+        </tr>
+      </thead>
+    <tbody *ngFor="let i of item.orders" [ngClass]="{process: item.process==='process', finished:item.process==='finished', denied: item.process==='denied'}"><tr>
+
+      <th> {{i.post.title}}</th>
+      <th>{{i.quantity}} кг</th>
+      <th> {{item.users.nameCompany}}</th>
+      <th>{{item.users.contacts}} </th>
+      <th><a style="text-decoration: none; color:darkgray"
+        href="mailto:{{item.users.email}}">{{item.users.email}}</a> </th>
+      <th>{{item.code}}</th>
+      <th>{{item.date | date :short}}</th>
+    <th *ngIf="item.process==='ordered'">В очікуванні</th>
+    <th *ngIf="item.process==='process'">В процесі</th>
+    <th *ngIf="item.process==='finished'">Виконано</th>
+    <th *ngIf="item.process==='denied'">Відхилено</th>
+    </tr>
+
+    </tbody>
+    <tfoot>
+      <tr>
+        <th  *ngIf="item.process!='process'"><button class="button" class="btn btn-warning custW" [(ngClass)]="disabled" (click)="onProcess(item.id)">В процесі</button></th>
+        <th *ngIf="item.process!='finished'"><button class="button" class="btn btn-success custS" [(ngClass)]="disabled" (click)="onComplete(item.id)">Виконано</button></th>
+        <th *ngIf="item.process!='denied'"><button class="button" class="btn btn-danger custD" [(ngClass)]="disabled" (click)="onDeny(item.id)">Відхилено</button></th>
+      </tr>
+    </tfoot>
+  </table>
+</mat-card>
+
+</div>
+</div>
+<mat-paginator [length]="totalPosts" [pageSize]="ordersPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)" ></mat-paginator>
+
+<!--
+
+<mat-card class="card" class="col-lg-6" *ngFor="let item of posts" >
+
+      <mat-card-content class="card__custom" *ngFor="let i of item.orders" style="font-size: 25px;">Назва продукту: {{i.post.title}}, кількість: {{i.quantity}}</mat-card-content>
+
+
+    <div *ngIf="isAdmin">
+      <mat-card-footer>
+
+        <table class="table" style="width: 600px">
+          <thead>
+            <tr>
+              <th><span style="color: blueviolet"> Клієнт: {{item.users.email}}</span></th>
+
+
+            </tr>
+          </thead>
+          </table>
+
+
+      </mat-card-footer>
+    </div>
+  </mat-card> -->
+
+  <!-- <div *ngFor="let i of item">
+    <p *ngFor="let post of i">{{post.title}}</p>
+  </div> -->
+
+
+
+<!-- <p>order works!</p>
+
+<mat-card class="card" class="col-lg-12" *ngFor="let item of posts">
+  <ul>
+    <li>
+      <p *ngFor="let i of item.orders">product {{i.post.title}} of quantity: {{i.quantity}}</p>
+    </li>
+
+  <p>{{item.orders[0].post.title}}</p>
+    </li>
+    <li>
+      <p>{{item.orders[0].quantity}}</p>
+    </li>
+    <li *ngIf="isAdmin">
+      <p><span style="color: blueviolet">Клієнт: {{item.users.email}}</span></p>
+    </li>
+  </ul>
+
+<div *ngFor="let i of item">
+    <p *ngFor="let post of i">{{post.title}}</p>
+  </div>
+</mat-card> -->

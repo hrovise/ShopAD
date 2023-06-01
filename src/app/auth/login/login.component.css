@@ -1,0 +1,20 @@
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+.custombt {
+  background-color: wheat;
+}
+.customb:hover {
+  background-color: rgb(179, 226, 245);
+  color: black;
+}
+
+.custombt:hover {
+  background-color: rgb(224, 197, 147);
+}

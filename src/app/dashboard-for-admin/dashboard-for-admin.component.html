@@ -1,0 +1,35 @@
+<mat-card>
+
+  <form (submit)="onSearch(SearchForm)" #SearchForm="ngForm" >
+    <mat-form-field>
+      <input matInput name="nameUser" ngModel type="text" placeholder="Пошук юзера по емейлу" #nameUserInput="ngModel" required nameUser>
+
+    </mat-form-field>
+
+
+
+    <button mat-raised-button color="accent" class="customW" type="submit" >Пошук</button>
+
+  </form>
+</mat-card>
+
+<mat-card *ngIf="!!user">
+  <mat-card-title >{{user.email}}</mat-card-title>
+  <mat-card-content >
+    <p>{{user.name}}</p>
+    <p>{{user.email}}</p>
+    <p>{{user.role}}</p>
+    <p *ngIf="statusUser=='blocked'">Заблокований</p>
+    <p *ngIf="statusUser!='blocked'">Дійсний</p>
+  </mat-card-content>
+  <button mat-raised-button color="primary" class="customb" *ngIf="user.role!='ADMIN'" (click)="GrantRole(user)">Надати права</button>
+  <button mat-raised-button color="warn" class="customb" *ngIf="user.role=='ADMIN'" (click)="denyRole(user)">Забрати права</button>
+  <button mat-raised-button color="warn" class="customb" *ngIf="statusUser!='blocked'" (click)="block(user)">Заблокувати</button>
+  <button mat-raised-button color="primary" class="customb" *ngIf="statusUser =='blocked'" (click)="unblock(user)">Розблокувати</button>
+  <div class="alert alert-danger" *ngIf="displayMessage&&statusUser=='blocked'">
+    <p>{{displayMessage}}</p>
+  </div>
+  <div class="alert alert-success" *ngIf="displayMessage&&statusUser!='blocked'">
+    <p>{{displayMessage}}</p>
+  </div>
+</mat-card>

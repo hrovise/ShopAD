@@ -1,0 +1,29 @@
+main {
+  padding: 1%;
+  width: 100%;
+}
+.app-post-list {
+  min-width: 100px;
+}
+.row__flex {
+  margin-top: 0px;
+  margin-left: 5%;
+
+  min-width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+:host {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.custom__column {
+  margin-left: 10px;
+  margin-right: 10px;
+  min-width: 400px;
+}
+/* .custom__column {
+  margin-left: 20px;
+} */

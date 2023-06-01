@@ -1,0 +1,102 @@
+<mat-toolbar class="toolbar_nav" color="primary">
+  <a routerLink="/"><span> UKIT</span></a>
+<span class="spacer"></span>
+
+  <ul>
+      <li>
+        <a  routerLink="/" (click)="categoryShowUp('')">Всі додатки </a>
+      </li>
+
+
+
+
+  <div>
+        <mat-form-field class="mat_selfcreated">
+          <mat-label>Категорії</mat-label>
+
+<mat-select>
+  <mat-option #chosen *ngFor="let cat of category" value={{cat.value}} (click)="categoryShowUp(chosen.value)">
+    {{cat.title}}
+  </mat-option>
+  <!-- <mat-option (click)="categoryShowUp('SL')">
+    Сповільнювач
+  </mat-option> -->
+</mat-select>
+
+        </mat-form-field>
+
+  </div>
+
+<!-- <li class="dropdown" appDropDown>
+  <a class="dropdown-toggle" role="button">Категорії<span class="caret"></span></a>
+
+        <ul class="dropdown-menu row">
+          <li style="cursor:pointer;"(click)="categoryShowUp('PS')">Пластифікатор</li>
+          <li style="cursor:pointer;" (click)="categoryShowUp('SL')">Сповільнювач</li>
+        </ul>
+      </li> -->
+
+
+
+
+<!--
+              <li class="dropdown" appDropDown>
+                <a class="dropdown-toggle" role="button">Категорії <span class="caret"></span></a>
+                <ul class="dropdown-menu row">
+                  <li (click)="categoryShowUp('PS')">Всі</li>
+                  <li>
+
+                  <li class="dropdown" appDropDown>
+                    <a class="dropdown-toggle" role="button">Категорії<span class="caret"></span></a>
+                    <ul class="dropdown-menu row">
+                      <li (click)="categoryShowUp('PS')">Пластифікатор</li>
+                      <li  (click)="categoryShowUp('SL')">Сповільнювач</li>
+                      </ul>
+                 </li>
+                </ul>
+              </li> -->
+
+
+      <!-- <select [(ngModel)]="categoryHeader"  (change)="categoryShowUp($event)"class="form-control mb-3" formControlName="category" name="category" id="category">
+
+        <option value="PS" >Пластифікатор</option>
+        <option value="SL">Сповільнювач</option>
+
+      </select> -->
+        <li>
+          <a mat-button routerLink="#" >Про нас</a>
+        </li>
+          <li>
+            <a mat-button routerLink="#" >Контакти</a>
+          </li>
+  </ul>
+  <span class="spacer"></span>
+  <ul>
+
+    <li *ngIf="userIsAuthenticated && !isAdmin">
+      <a mat-button routerLink="/cart" routerLinkActive="mat-accent">Кошик</a>
+    </li>
+
+<li *ngIf="userIsAuthenticated ">
+  <a mat-button routerLink="/order" routerLinkActive="mat-accent">Замовлення</a>
+</li>
+
+<li *ngIf="userIsAuthenticated && isAdmin">
+  <a mat-button routerLink="/dashboard-admin" routerLinkActive="mat-accent">Панель</a>
+</li>
+
+    <li *ngIf="userIsAuthenticated && isAdmin">
+      <a mat-button routerLink="/create" routerLinkActive="mat-accent">Додати Додаток</a>
+    </li>
+    <li>
+      <a mat-button *ngIf="!userIsAuthenticated" routerLink="/login" routerLinkActive="mat-accent">Login</a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
+    </li>
+  </ul>
+
+</mat-toolbar>

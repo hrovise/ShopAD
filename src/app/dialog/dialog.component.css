@@ -1,0 +1,13 @@
+::ng-deep .mat-dialog-container {
+  border: 1px solid black;
+}
+
+.customText {
+  width: 700px;
+
+  border: 1px solid lightgray;
+}
+
+.cust:hover {
+  background-color: brown;
+}

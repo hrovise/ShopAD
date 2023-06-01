@@ -1,0 +1,62 @@
+
+
+
+  <mat-card class="card" >
+
+
+
+
+  <mat-card-header class="header__card">{{postItem.category}}</mat-card-header>
+  <mat-card-title><a class="customref"  [routerLink]="['/detail', postItem.id]">{{postItem.title}}</a></mat-card-title>
+  <img mat-card-image [src]="postItem.imagePath" [alt]="postItem.title" class="post-image"
+    style="max-height:340px; max-width: 400px;">
+    <mat-card-content>{{postItem.content}}</mat-card-content>
+    <div *ngIf="!userIsAuthenticated">Ціна: {{postItem.price}} грн/кг</div>
+      <div *ngIf="!userIsAuthenticated">
+
+       <a class="navigate" routerLink="/login"> <p>Увійдіть, щоб зробити замовлення</p></a>
+      </div>
+    <mat-card-footer *ngIf="userIsAuthenticated">
+
+
+      <mat-card-actions>
+
+          <div  class="radio" style="display: inline;" *ngFor="let quant of postItem.quantity">
+            <label >
+
+              <input
+                #inputS
+             type="radio"
+              name="quant + {{postItem.title}}"
+              [ngModel]="postItem.quantity[0]"
+              [value]="quant"
+              (change)="Onevent(quant)">
+              {{quant}} кг
+
+                <div style="display: inline;" [ngSwitch]="quant" >
+                  <img *ngSwitchCase="postItem.quantity[0]" class="image-small small__1" mat-card-sm-image
+                   >
+                  <img *ngSwitchCase="postItem.quantity[1]" class="image-small small__2" mat-card-sm-image
+                    >
+                  <img *ngSwitchCase="postItem.quantity[2]" class="image-small small__3" mat-card-sm-image
+                    >
+
+                </div>
+            </label>
+
+
+        </div>
+          <div class="alert alert-success" *ngIf="bought">
+            <p>Товар додано</p>
+          </div>
+
+        <a *ngIf="!isAdmin" mat-button color="primary" class="btn__buy" (click)="onAdd(postItem.id)">Купити</a>
+
+        <div *ngIf="!isAdmin" class="content__buy">{{postItem.price}} грн/кг</div>
+      <a *ngIf="isAdmin" mat-button color="primary" [routerLink]="['/edit', postItem.id]">Редагувати</a>
+      <button mat-button *ngIf="isAdmin" mat-button color="warn" (click)="onDelete(postItem.id)">Видалити</button>
+      <!-- <button mat-button color="warn" (click)="onDelete(postItem.id)">DELETE</button> -->
+      </mat-card-actions>
+    </mat-card-footer>
+
+  </mat-card>

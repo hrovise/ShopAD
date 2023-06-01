@@ -1,0 +1,21 @@
+<mat-form-field name="selected_category">
+  <label>Категорії</label>
+  <!-- <mat-card-title name="selected_category" #selected_category> -->
+  <mat-select (selectionChange)="onSelect($event)" class="form-control mb-3" formControlName="category" name="category"
+    id="category" #selected_category>
+    <!-- <option>{{category[0].title}}</option> -->
+    <mat-option *ngFor="let categ of category" value={{categ.value}}>{{categ.title}}</mat-option>
+
+
+  </mat-select>
+
+<button mat-raised-button color='primary' class="button" (click)="removeCategory(selected_category)">Видалити
+  категорію</button>
+
+</mat-form-field>
+<input [(ngModel)]="categorytext" type="text" name="title_category" minlength="3" placeholder="Назва Категорії" #category_text>
+<button mat-raised-button color='primary' class="button" (click)="addCategory(category_text.value)">Додати категорію</button>
+
+<div class="alert alert-success" *ngIf="addedCategory">
+  <p>Категорію Додано</p>
+</div>

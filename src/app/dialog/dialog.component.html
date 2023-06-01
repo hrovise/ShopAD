@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>
+{{title}}<!--nazva dodatku-->
+</h1>
+<mat-dialog-content style="overflow: hidden;"class="customDialog">
+<textarea [(ngModel)]="text" class="customText" matInput rows="10"  placeholder="Вкажіть питання, яке хочете обговорити з технологом">
+</textarea>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="btn btn-success" type="submit" [mat-dialog-close]="true" (click)="onSend()">Замовити  </button>
+ <p style="width:10px">   </p>
+  <button mat-raised-button color="warn" class="cust" matDialogClose>   Скасувати</button>
+</mat-dialog-actions>

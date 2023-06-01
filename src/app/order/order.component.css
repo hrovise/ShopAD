@@ -1,0 +1,37 @@
+/* .card__custom {
+  height: 45px;
+} */
+.ng-start-inserted {
+  width: 600px;
+}
+tr {
+  white-space: nowrap;
+}
+.process {
+  color: rgb(177, 205, 50);
+}
+.finished {
+  color: darkgreen;
+}
+.denied {
+  color: red;
+}
+.custW {
+  white-space: nowrap;
+  width: 100%;
+}
+
+.custS:hover {
+  background-color: lightgreen;
+}
+
+.custW:hover {
+  background-color: lightyellow;
+}
+.custD:hover {
+  background-color: lightcoral;
+}
+
+::ng-deep mat-card {
+  border: white;
+}

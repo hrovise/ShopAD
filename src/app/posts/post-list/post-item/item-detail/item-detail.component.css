@@ -1,0 +1,42 @@
+.card-detail {
+  margin-right: 15%;
+  min-width: 300px;
+  min-height: 400px;
+
+  display: block;
+
+  text-align: center;
+}
+.image__large {
+  margin-right: 5%;
+  width: 400px;
+  height: 400px;
+  max-width: 100%;
+  max-height: 100%;
+
+  align-items: center;
+}
+
+.custom {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.custom:hover {
+  background-color: antiquewhite;
+  color: black;
+}
+
+.activePointer {
+  display: none;
+}
+.customref:hover {
+  color: blueviolet;
+}
+
+.customDiv {
+  color: black;
+}
+.customDiv:hover {
+  color: gray;
+}

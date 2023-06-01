@@ -1,0 +1,59 @@
+<div class="alert alert-danger" *ngIf="UserExist">
+  <p>Такий користувач вже існує</p>
+</div>
+<div class="alert alert-success" *ngIf="userRegistred">
+  <p>Користувача майже зареєстровано. Лишилось тільки пройти за посиланням, яке прийшло Вам на пошту</p>
+</div>
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSignup(SignupForm)" #SignupForm="ngForm" *ngIf="!isLoading" >
+  <mat-form-field>
+    <input matInput name="email" ngModel pattern="[\w.]+@[\w.]+\.\w+" type="email" placeholder="E-mail" #emailInput="ngModel" required email>
+    <mat-error *ngIf="emailInput.invalid"> Введіть будь-ласка валідну пошту</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="name" ngModel  type="name" placeholder="Ім'я"
+      #nameInput="ngModel" required  >
+    <!-- <mat-error *ngIf="nameInput.invalid"> Ведіть ім'я</mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="nameCompany" ngModel  type="name" placeholder="Ім'я Компанії"
+      #nameInput="ngModel" required >
+    <!-- <mat-error *ngIf="nameInput.invalid"> Ведіть ім'я</mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="city" ngModel  type="name" placeholder="місто"
+      #nameInput="ngModel" required  >
+    <!-- <mat-error *ngIf="nameInput.invalid"> Ведіть ім'я</mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field>
+
+    <input matInput name="contacts" ngModel pattern="[0-9]+" type="telephon" id="phoneNumber" placeholder="(380)XXX-XXX-XX-XX"
+      #numbersInput="ngModel" required mask="(000)000 000 00 00">
+      <mat-error *ngIf="numbersInput.invalid"> Введіть будь-ласка валідний номер</mat-error>
+    <!-- <mat-error *ngIf="nameInput.invalid"> Ведіть ім'я</mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="password" name="password" ngModel #passwordInput="ngModel" matInput placeholder="Пароль" required>
+    <mat-error *ngIf="passwordInput.invalid">Введіть будь-ласка валідний пароль</mat-error>
+
+  </mat-form-field>
+<div [hidden]="captcha">
+
+  <re-captcha (resolved)="resolved($event)" siteKey="6LcbNKQUAAAAAAoVCCHd-A5zYtBiskY6qg7jGwWS">
+
+  </re-captcha>
+</div>
+<div [hidden]="!captcha">
+
+</div>
+
+    <button mat-raised-button color="primary" class="customb" type="submit" *ngIf="!isLoading">Зареєструватись</button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </form>
+</mat-card>

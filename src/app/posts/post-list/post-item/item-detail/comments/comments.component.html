@@ -1,0 +1,51 @@
+
+
+<div class="customComment">
+<mat-card class="output" *ngFor="let comment of comments">
+  <mat-card-header style="font-size:14px">
+    <table class="table customTable">
+    <thead>
+      <tr>
+        <th> </th>
+        <th>Автор: {{comment.name}}</th>
+        <th>{{comment.date | date :short }}</th>
+      </tr>
+    </thead>
+    <!-- <tbody>
+      <tr>
+        <th> </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+      </tr>
+    </tbody> -->
+
+    </table>
+  </mat-card-header>
+  <mat-card-content style="font-weight: bold;">{{comment.content}}</mat-card-content>
+  <mat-card-footer *ngIf="isAdmin">
+    <button mat-raised-button color='warn' class="cust"(click)="onDelete(comment._id)"> Видалити </button>
+  </mat-card-footer>
+</mat-card>
+
+<mat-card class="comment" *ngIf="userIsAuthenticated">
+  <mat-card-header class="comment__header"></mat-card-header>
+  <mat-card-content class="comment__content">
+    <mat-form-field style="width:500px;" >
+      <!-- <input matInput type="text" name="title"  minlength="3" placeholder="Title" #title > -->
+      <textarea class="customTextarea" matInput rows="6" name="content"  minlength="3" placeholder="Коментар"
+        #content> </textarea>
+      <button mat-raised-button color='primary' class="customStay" (click)="onSave(content)"> Лишити коментар </button>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>
+
+</div>
+
+
+
+
+

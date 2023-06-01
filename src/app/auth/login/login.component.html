@@ -1,0 +1,40 @@
+
+<div class="alert alert-danger" *ngIf="FailedLogin===false">
+  <p>Повторіть спробу</p>
+</div>
+<mat-card>
+
+
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading" >
+  <mat-form-field>
+    <input matInput name="email" ngModel type="email" placeholder="Пошта" #emailInput="ngModel" required email>
+    <mat-error *ngIf="emailInput.invalid"> Введіть будь-ласка валідну пошту</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="password" name="password"  ngModel #passwordInput="ngModel" matInput placeholder="Пароль" required>
+    <mat-error *ngIf="passwordInput.invalid">Введіть будь-ласка валідний пароль</mat-error>
+
+  </mat-form-field>
+
+
+<!-- <div [hidden]="captcha">
+
+  <re-captcha (resolved)="resolved($event)" siteKey="6LcbNKQUAAAAAAoVCCHd-A5zYtBiskY6qg7jGwWS">
+
+  </re-captcha>
+</div>
+<div [hidden]="!captcha">
+
+</div> -->
+    <button mat-raised-button color="primary" class="customb" type="submit" *ngIf="!isLoading">Залогуватись</button>
+    <button mat-raised-button color="primary" class="customb" type="button" (click)="onReset()" *ngIf="!isLoading">Забули пароль?</button>
+    <div style="margin-top: 2%;">Нема акаунту?Зареєструйтесь!</div>
+    <button mat-raised-button color="basic" class="custombt" type="button" routerLink='/signup'>Перейти до реєстрації</button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </form>
+</mat-card>

@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~quill/dist/quill.snow.css";
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+
+  /* background: url("src/app/files/силос1.jpg") center; */
+}
+body {
+  margin: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}

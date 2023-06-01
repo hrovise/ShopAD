@@ -1,0 +1,66 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<form [formGroup]="form" (submit)="onSave()" *ngIf="!isLoading">
+
+
+<mat-form-field name="selected_category">
+  <label>Категорії</label>
+  <!-- <mat-card-title name="selected_category" #selected_category> -->
+  <mat-select (selectionChange)="onSelect($event)" class="form-control mb-3" formControlName="category" name="category"
+    id="category" #selected_category>
+    <!-- <option>{{category[0].title}}</option> -->
+    <mat-option *ngFor="let categ of category" value={{categ.value}}>{{categ.title}}</mat-option>
+
+
+  </mat-select>
+
+
+
+</mat-form-field>
+
+
+  <mat-form-field>
+    <input matInput type="text" name="title" formControlName="title" minlength="3" placeholder="Назва">
+    <!-- <mat-error *ngIf="title.invalid">Please enter normally</mat-error> -->
+    <mat-error *ngIf="form.get('title').invalid">Мала кількість символів</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <input matInput type="price" name="price" formControlName="price" placeholder="Ціна">
+    <!-- <mat-error *ngIf="title.invalid">Please enter normally</mat-error> -->
+    <!-- <mat-error *ngIf="form.get('price').invalid">Please enter price</mat-error> -->
+  </mat-form-field>
+
+
+  <div>
+    <button mat-raised-button color='primary' (click)="filePicker.click()">
+      Виберіть картинку
+    </button>
+    <input type="file" #filePicker (change)="onImagePicked($event)">
+  </div>
+  <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+    <img [src]="imagePreview" [alt]="form.value.title">
+  </div>
+
+
+  <mat-form-field>
+    <textarea matInput rows="6" name="content" formControlName="content" minlength="3"
+      placeholder="контент"> </textarea>
+    <!-- <mat-error *ngIf="content.invalid">Please enter normally</mat-error> -->
+    <mat-error *ngIf="form.get('content').invalid">Мала кількість символів</mat-error>
+  </mat-form-field>
+
+
+
+  <quill-editor matInput name="contentLarge" formControlName="contentLarge" minlength="3"
+    placeholder="Основний контент"></quill-editor>
+
+  <!-- <mat-form-field>
+          <textarea matInput rows="25" name="contentLarge" formControlName="contentLarge" minlength="3"
+            placeholder="contentLarge"> </textarea>
+
+          <mat-error *ngIf="form.get('contentLarge').invalid">Please enter normally</mat-error>
+        </mat-form-field> -->
+
+  <button mat-raised-button color='primary' submit> Зберегти </button>
+</form>

@@ -1,0 +1,73 @@
+<body class="text-center container">
+  <form class="form-signin" [formGroup]="form" (submit)="onUpdateUser()"> <!--(submit)="onUpdateUser()"-->
+    <!-- <img class="mb-4" src="../../assets/files/1.jpg" alt="" width="72" height="72"> -->
+
+
+
+    <div class="container">
+      <div class="row">
+        <!-- <label type="login" name="login" id="inputLogin" class="form-control" placeholder="Login">{{user.login}}</label> -->
+        <!--first row-->
+        <div class="col-12">
+          <label type="email" name="email" id="inputLogin" class="form-control"
+            placeholder="Email">Пошта: {{user.email}}</label>
+        </div>
+        <!-- <div class="col-6">
+          <input formControlName="email" type="email" name="email" id="inputEmail" class="form-control"
+            placeholder="email">
+
+        </div> -->
+
+      </div>
+      <!--second row-->
+      <div class="row">
+        <div class="col-6">
+          <label type="text" name="name" id="name" class="form-control" placeholder="ім'я">Ім'я: {{user.name}}</label>
+        </div>
+        <div class="col-6">
+          <input formControlName="name" type="text" name="name" id="inputName" class="form-control" placeholder="name">
+        </div>
+      </div>
+
+       <!--third-->
+ <div class="row">
+  <div class="col-6">
+    <label type="text" name="nameCompany" id="nameCompany" class="form-control" placeholder="ім'я компанії">Ім'я Компанії: {{user.nameCompany}}</label>
+  </div>
+  <div class="col-6">
+    <input formControlName="nameCompany" type="text" name="nameCompany" id="inputNameCompany" class="form-control" placeholder="ім'я компанії">
+  </div>
+</div>
+   <!--fourth-->
+   <div class="row">
+    <div class="col-6">
+      <label type="number" name="contacts" id="contacts" class="form-control" placeholder="телефон">телефон: {{user.contacts}}</label>
+    </div>
+    <div class="col-6">
+      <input formControlName="contacts" type="telephon" name="contacs" id="Inputcontacts" class="form-control" placeholder="телефон">
+    </div>
+  </div>
+
+  <!--end-->
+    </div>
+
+
+    <!-- <input formControlName="login" [(ngModel)]="login" type="login" name="login" id="inputLogin" class="form-control" placeholder="Login"
+      required="" autofocus="">
+
+
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input [(ngModel)]="password" type="password" name="password" id="inputPassword" class="form-control"
+      placeholder="Password" required="">
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">©2023</p> -->
+    <button class="btn btn-lg btn-primary btn-block" style="margin-top: 5px;" type="submit">Оновити</button>
+  </form>
+
+
+</body>

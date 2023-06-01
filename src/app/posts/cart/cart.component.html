@@ -1,0 +1,68 @@
+
+<mat-card class="col-lg-8" *ngFor="let item of posts">
+
+      <mat-card-content style="font-size:25px">
+
+        <table class="table" style="width: 600px">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Назва</th>
+              <th>Кількість</th>
+              <th>Вартість</th>
+
+            </tr>
+          </thead>
+        <tbody ><tr>
+          <th><img class="customImage" src={{item.imagePath}}></th>
+          <th> {{item.title}}</th>
+          <th> {{item.quantity}} кг</th>
+          <th>{{item.price*item.quantity}} грн.</th>
+        </tr>
+
+        </tbody>
+
+      </table>
+    </mat-card-content>
+
+  <!-- <mat-card-content style="font-size:25px"><span style="color:green; ">Назва:</span> {{item.title}}</mat-card-content>
+  <mat-card-content style="font-size:25px"><span style="color:green">Кількість:</span> {{item.quantity}}</mat-card-content>
+  <mat-card-content style="font-size:25px"><span style="color:green">Кількість:</span>
+    <img class="customImage" src={{item.imagePath}}></mat-card-content> -->
+
+  <mat-card-footer><button class="customButton" mat-button color="warn" (click)="onDelete(item.id)">Видалити</button> </mat-card-footer>
+</mat-card>
+<div>
+  <thead>
+    <tr>
+      <th>Загальна вартість</th>
+      <th>{{overAllPrice}} грн</th>
+    </tr>
+  </thead>
+  <form *ngIf="posts.length>0" #orderform="ngForm" (submit)="putOrder(orderform)">
+    <label>Код ЄДРПОУ: </label>
+    <mat-form-field style="margin-left: 10px;">
+    <input matInput name="codeE" ngModel type="text" [(ngModel)]="code" pattern="[0-9]+" placeholder="XXXXXXXX" required mask="00000000">
+    </mat-form-field>
+  <button class="btn btn-primary" style="margin-left: 25px;" *ngIf="posts.length > 0; else showEmptyCart" >
+    Замовити
+  </button>
+  <ng-template #showEmptyCart>
+    <p> Корзина порожня </p>
+  </ng-template>
+  </form>
+
+</div>
+
+
+
+<!-- <div class="col-lg-6" *ngFor="let item of posts" >
+  <p>{{item.title}}</p>
+  <p>{{item.quantity}}</p>
+  <button mat-button color="warn" (click)="onDelete(item.id)">DELETE</button>
+  </div>
+<div>
+  <button class="btn" (click)="putOrder()">
+    Order
+  </button>
+</div> -->
